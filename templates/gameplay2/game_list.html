@@ -1,0 +1,27 @@
+
+{% extends 'base.html' %}
+{% block content %}
+
+
+<h3>Active games</h3>
+
+            <ul class = "list-group">
+                {% for g in game_list %}
+                    <a class = "list-group-item" href = "{{ g.get_absolute_url }}">
+                    <li>Game {{ g.id }}: {{ g.first_player }} vs {{ g.second_player }} , {{ game.id }}</li>
+                {% endfor %}
+                </a>
+            </ul>
+
+        <h3>Finished games</h3>
+            <ul class = "list-group">
+                {% for g in fin %}
+                    <a class = "list-group-item" href = "{{ g.get_absolute_url }}">
+                    <li>Game {{ g.id }}: {{ g.first_player }} vs {{ g.second_player }} , {{ game.id }}</li>
+                {% endfor %}
+                </a>
+            </ul>
+
+
+
+{% endblock %}

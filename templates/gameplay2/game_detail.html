@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+{% block title %}
+Game detail
+{% endblock %}
+
+{% block styling %}
+        {{ block.super }}
+        <style type = "text/css">
+            .tictatoe-table{
+                width: 300px;
+                border-width: 2px;
+            }
+
+            .tictactoe-cell{
+                background-color: #2aabd2;
+                border-color: blue;
+                border-width:4px;
+                width: 100px;
+                height: 100px;
+                text-align: center;
+                vertical-align: middle !important;
+                font-size: 60px;
+
+            }
+
+        </style>
+{% endblock styling %}
+
+
+{% block content %}
+
+    <div class = "col-md-5">
+        <table class = "tictatoe-table">
+        {% for row in game.board %}
+            <tr>
+                {% for move in row %}
+                <td background-color ="blue" class = "tictactoe-cell">
+                    {% if move %}
+
+                        {% if move.by_first_player %}
+                            X
+                        {% else %}
+                            O
+                        {% endif %}
+                    {% endif %}
+                </td>
+                {% endfor %}
+            </tr>
+
+        {% endfor %}
+        </table>
+    </div>
+
+
+
+<div class = "col-md-5">
+{% if form %}
+    {% if game.status == 'F' %}
+        {{ game.first_player }} plays!
+        {% endif %}
+    {% if game.status == 'S' %}
+        {{ game.second_player}} plays!
+        {% endif %}
+    {% if game.status == 'W' %}
+        {{ game.first_player }} wins!
+        {% endif %}
+    {% if game.status == 'l' %}
+        {{ game.second_player }} wins!
+        {% endif %}
+    {% if game.status == 'D' %}
+        Match is draw -_-
+        {% endif %}
+
+    <form method="post" action="{% url 'make_move_url' game.id %}">
+        {{ form | crispy }}
+
+        {% csrf_token %}
+        <button type="submit">make_move</button>
+    </form>
+    {% else %}
+    Not your turn bitch.
+{% endif %}
+</div>
+
+{% endblock %}

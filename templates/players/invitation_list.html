@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class = 'col-md-6'>
+        <ul class = "list-group">
+
+                    {% for inv in invitation_list %}
+                        <a class="list-group-item"
+                           href="{% url 'player_accept_invitation' id=inv.id %}">
+                            {{ inv.from_user.username }} has invited you to a game. Click here.
+                        </a>
+                    {% endfor %}
+            </ul>
+
+    </div>
+{% endblock %}

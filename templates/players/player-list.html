@@ -1,0 +1,23 @@
+{% if games_list %}
+    {% for g in games_list %}
+        <a href = "{{  g.get_absolute_url }}">
+        {{ g }}
+
+        {% if g.status not in 'FS' %}
+
+            {% if g.status == 'W' and user == g.first_player %}
+                You Won
+            {% endif %}
+            {% if g.status == 'L' and user == g.second_player %}
+                You Won
+            {% endif %}
+            {% if g.status == 'D' %}
+                Draw
+            {% else %}
+                You Lost
+            {% endif %}
+        {% endif %}
+        {{ g.move_set.count }}
+        </a>
+    {% endfor %}
+{% endif %}
