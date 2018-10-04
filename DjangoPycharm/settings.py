@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'gameplay2',
     'players',
+    'user_registration',
     'crispy_forms'
 ]
 
@@ -133,3 +134,10 @@ LOGIN_REDIRECT_URL = 'player_home'
 LOGOUT_REDIRECT_URL = 'welcome'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+## Email Stuff (Private)
+# EMAIL_USE_TLS = True
+# EMAIL_HOST = '<smtp_host>'
+# EMAIL_HOST_USER = '<email_address>'
+# EMAIL_HOST_PASSWORD = '<email_password>'
+# EMAIL_PORT = <port>
