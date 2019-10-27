@@ -25,5 +25,6 @@ urlpatterns = [
     url('^admin/', admin.site.urls),
     url(r'^$', welcome, name = 'welcome'),
     url(r'^gameplay/', include('gameplay2.urls')),
-    url(r'^player/', include('players.urls'))
+    url(r'^player/', include('players.urls')),
+    url(r'^user_registration/', include('user_registration.urls'))
 ]
